@@ -16,3 +16,10 @@
   justify-content: center;
   font-size: 3rem;
 }
+.data{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  
+}
