@@ -12,7 +12,7 @@ const Registration = () => {
         name: '',
         assessmentId: '',
         sourceApp:'Ojas-Java-Test',
-        recipientsArray: []
+        recipients: []
     });
 
     const {
@@ -23,7 +23,7 @@ const Registration = () => {
     } = formData
 
     useEffect(() => {
-        getAllAssessments().then(data => setAssessment(data.assessment))
+        getAllAssessments().then(data => setAssessment(data.assessments))
     }, [])
     const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
 
@@ -35,7 +35,7 @@ const Registration = () => {
     
           if (value && isValid(value)) {
             setFormData({
-                ...formData, recipientsArray: [...recipients, value],
+                ...formData, recipients: [...recipients, value],
                 recipients: ""
             });
           }
@@ -89,11 +89,6 @@ const Registration = () => {
                         {assessment.map((data) => (
                             <option>{data.id}</option>
                         ))}
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
                     </Form.Control>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect2">
@@ -106,70 +101,6 @@ const Registration = () => {
         </div>
     )
 }
-
-
-// class Registration extends Component {
-
-//     constructor(props) {
-
-//         super(props)
-
-//         this.state = {
-//             items : []
-
-//         }
-//     }
-
-//     comp
-
-
-
-//     render() {
-
-//         const {name,email,location,course,phone}=this.state
-
-//         return (<>
-
-//             <h2 className="text-center py-3"> User Registration</h2>
-
-//             <form className="mx-auto w-50" onSubmit={this.submitHandler}>
-
-//                 <div className="form-group p-1">
-//                     <label>Name</label>
-//                     <input className="form-control" type="text"
-//                     />
-//                 </div>
-
-//                 <div className="form-group ">
-//                     <label>Email</label>
-//                     <input className="form-control" type="text"
-
-//                     />
-//                 </div>
-
-//                 <div className="form-group my-3">
-//                     <div class=" dropdown">
-//                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-//                             Dropdown button
-//   </button>
-//                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-//                             <a class="dropdown-item" href="#">Action</a>
-//                             <a class="dropdown-item" href="#">Another action</a>
-//                             <a class="dropdown-item" href="#">Something else here</a>
-//                         </div>
-//                     </div>
-//                 </div>
-
-
-
-//                 <button className="btn btn-primary mx-5" type="submit"> Submit</button>
-
-//             </form>
-
-
-//         </>)
-//     }
-// }
 
 
 export default Registration;

@@ -20,7 +20,7 @@ const AllAssessment = () => {
 
   return (
     <div className="col-md-6 mx-auto">
-
+      <h1>List of Assessments</h1>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -32,6 +32,7 @@ const AllAssessment = () => {
         <tbody>
             {assessment.map((data) => (
               <tr>
+                <td>#</td>
               <td>{data.id}</td>
               <td>{data.name}</td>
               </tr>
