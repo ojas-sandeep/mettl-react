@@ -1,11 +1,47 @@
-import React from 'react';
+import React, { Component, useEffect, useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { getAllAssessments } from '../components/Api'
 
-function AllAssessments() {
+import { Link } from 'react-router-dom'
+import { Dropdown, Form, Table } from 'react-bootstrap';
+
+const AllAssessment = () => {
+
+  const [assessment, setAssessment] = useState([])
+
+  useEffect(() => {
+    getAllAssessments().then(data => {
+      setAssessment(data.assessments)
+      console.log(data)
+    })
+    
+  }, [])
+
+
   return (
-    <div className='products'>
-      <h1>All Assessment</h1>
+    <div className="col-md-6 mx-auto">
+
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Id</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+            {assessment.map((data) => (
+              <tr>
+              <td>{data.id}</td>
+              <td>{data.name}</td>
+              </tr>
+            ))}
+        </tbody>
+      </Table>
     </div>
-  );
+  )
 }
 
-export default AllAssessments;
+
+
+export default AllAssessment;
